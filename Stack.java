@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Stack {
-    public ArrayList<String> chars;
+    private ArrayList<String> chars;
     private int size;
     private String top;
 
