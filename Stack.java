@@ -22,7 +22,7 @@ public class Stack {
     }
 
     public String pop() {
-        String popped = "-1";
+        String popped = null;
         if(chars.isEmpty() == false) {
             popped = chars.get(0);
             chars.remove(0);
@@ -33,7 +33,7 @@ public class Stack {
     }
 
     public String top() {
-        String top = "-1";
+        String top = null;
 
         if(chars.isEmpty() == false)
             top = chars.get(0);
