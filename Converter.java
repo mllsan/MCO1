@@ -37,15 +37,15 @@ public class Converter {
 
             // operand
             else if (Character.isDigit(c)) {
-                StringBuilder PostFix = new StringBuilder();
+                StringBuilder Number = new StringBuilder();
 
                 // if number is not single digit
                 while (i < ntn.length() && Character.isDigit(ntn.charAt(i))) {
-                    PostFix.append(ntn.charAt(i));
+                    Number.append(ntn.charAt(i));
                     i++;
                 }
 
-                tempQ.enqueue(PostFix.toString());
+                tempQ.enqueue(Number.toString());
                 prevToken = "Operand";
             }
 
