@@ -27,7 +27,7 @@ public class Stack {
             popped = chars.get(0);
             chars.remove(0);
             if (!chars.isEmpty()) {
-            this.top = chars.get(0);
+                this.top = chars.get(0);
             } 
             else {
                 this.top = null;
