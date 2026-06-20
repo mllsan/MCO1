@@ -24,8 +24,8 @@ public class Stack<T> {
         return popped;
     }
 
-    public String top() {
-        String top = null;
+    public T top() {
+        T top = null;
 
         if(!chars.isEmpty())
             top = elements.get(elements.size() - 1);
