@@ -15,7 +15,15 @@ public class Calculator {
         while (input.hasNextLine()) {
             String line = input.nextLine();
             System.out.println("Infix: " + line);
-            System.out.println(convert(new Converter(), line));
+
+            // run time analysis
+            long timeStart = System.nanoTime();
+            String result = convert(new Converter(), line);
+            long timeEnd = System.nanoTime();
+            long duration = timeEnd - timeStart;
+
+            System.out.println(result);
+            System.out.println("Execution Time: " + duration + " nano seconds");
             System.out.println();
         }
 
