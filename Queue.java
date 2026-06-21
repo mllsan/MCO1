@@ -33,13 +33,13 @@ public class Queue<T> {
         return head;
     }
 
-    public String getTail() {
+    public T getTail() {
         T tail = null;
 
         if (!elements.isEmpty())
             tail = elements.getLast();
 
-        return t;
+        return tail;
     }
 
     public int getSize() {
