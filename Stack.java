@@ -1,54 +1,39 @@
-import java.util.*;
+import java.util.ArrayList;
 
-public class Stack {
-    private ArrayList<String> chars;
-    private int size;
-    private String top;
+public class Stack<T> {
+    private ArrayList<T> elements;
 
     public Stack() {
-        chars = new ArrayList<String>();
-        this.size = 0;
-        this.top = null;
+        elements = new ArrayList<T>();
     }
 
-    public boolean isEmpty(){
-        return chars.size() == 0;
+    public boolean isEmpty() {
+        return elements.size() == 0;
     }
 
-    public void push(String elem) {
-        chars.add(0, elem);
-        this.size = chars.size();
-        this.top = chars.get(0);
+    public void push(T elem) {
+        elements.add(elem);
     }
 
-    public String pop() {
-        String popped = null;
-        if(chars.isEmpty() == false) {
-            popped = chars.get(0);
-            chars.remove(0);
-            if (!chars.isEmpty()) {
-                this.top = chars.get(0);
-            } 
-            else {
-                this.top = null;
-            }
-            this.size = chars.size();
-        }
+    public T pop() {
+        T popped = null;
+
+        if(!chars.isEmpty())
+            popped = elements.remove(elements.size() - 1);
+
         return popped;
     }
 
-    public String top() {
-        String top = null;
+    public T top() {
+        T top = null;
 
-        if(chars.isEmpty() == false)
-            top = chars.get(0);
+        if(!chars.isEmpty())
+            top = elements.get(elements.size() - 1);
 
         return top;
     }
 
     public int getSize() {
-        return this.size;
+        return elements.size();
     }
-
-
 }

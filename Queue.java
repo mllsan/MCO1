@@ -1,73 +1,48 @@
-import java.util.*;
+import java.util.LinkedList;
 
-public class Queue {
-    private LinkedList<String> chars;
-    private String head;
-    private String tail;
-    private int size;
+public class Queue<T> {
+    private LinkedList<T> elements;
 
     public Queue() {
-        chars = new LinkedList<String>();
-        this.head = null;
-        this.tail = null;
-        this.size = 0;
+        elements = new LinkedList<T>();
     }
 
     public boolean isEmpty() {
-        return chars.size() == 0;
+        return elements.size() == 0;
     }
 
-    public void enqueue(String elem) {
-        if (chars.isEmpty() == true) {
-            chars.addFirst(elem);
-            this.head = elem;
-            this.tail = elem;
-            this.size = chars.size();
-        }
-        else {
-            chars.addLast(elem);
-            this.tail = elem;
-            this.size = chars.size();
-        }
-
+    public void enqueue(T elem) {
+        elements.addLast(elem);
     }
 
-    public String dequeue() {
-        String dq = null;
-        if (chars.isEmpty() == false) {
-            dq = chars.getFirst();
-            chars.removeFirst();
-            if (!chars.isEmpty()) {
-                this.head = chars.getFirst();
-            } 
-            else {
-                this.head = null;
-                this.tail = null;
-            }
-            this.size = chars.size();
-        }
+    public T dequeue() {
+        T dq = null;
+
+        if (!elements.isEmpty())
+            dq = elements.removeFirst();
+
         return dq;
     }
 
-    public String getHead() {
-        String h = null;
+    public T getHead() {
+        T head = null;
 
-        if (chars.isEmpty() == false)
-            h = this.head;
+        if (!elements.isEmpty())
+            head = elements.getFirst();
 
-        return h;
+        return head;
     }
 
     public String getTail() {
-        String t = null;
+        T tail = null;
 
-        if (chars.isEmpty() == false)
-            t = this.tail;
+        if (!elements.isEmpty())
+            tail = elements.getLast();
 
         return t;
     }
 
     public int getSize() {
-        return chars.size();
+        return elements.size();
     }
 }
