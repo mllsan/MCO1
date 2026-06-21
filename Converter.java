@@ -19,8 +19,8 @@ public class Converter {
     }
 
     public String toPostfix(String ntn) {
-        Stack tempS = new Stack();
-        Queue tempQ = new Queue();
+        Stack<String> tempS = new Stack<>();
+        Queue<String> tempQ = new Queue<>();
         boolean isError = false;
         int i = 0;
         String errorMessage = "";
