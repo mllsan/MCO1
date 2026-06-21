@@ -18,7 +18,7 @@ public class Stack<T> {
     public T pop() {
         T popped = null;
 
-        if(!chars.isEmpty())
+        if(!elements.isEmpty())
             popped = elements.remove(elements.size() - 1);
 
         return popped;
@@ -27,7 +27,7 @@ public class Stack<T> {
     public T top() {
         T top = null;
 
-        if(!chars.isEmpty())
+        if(!elements.isEmpty())
             top = elements.get(elements.size() - 1);
 
         return top;
