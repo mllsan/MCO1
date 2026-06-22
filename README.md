@@ -5,8 +5,8 @@
 Enter this into terminal to compile the program: 
   - javac Calculator.java Converter.java Queue.java Stack.java DataSetGenerator.java
     
-Enter this to pick and generate a data set:
+Enter this in terminal to pick and generate a data set:
   - java DataSetGenerator
     
-Enter this to run the driver:
+Enter this in terminal to run the program:
   - java Calculator
