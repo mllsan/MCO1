@@ -5,7 +5,7 @@ public class DatasetGenerator {
     // test case 1: hierarchy/chain operators
 
     // test case 2: nested groupings
-    public String generateCase2(int tokens) {
+    public String category2(int tokens) {
         int nests = tokens / 4;
 
         if (nests < 1)
@@ -47,7 +47,7 @@ public class DatasetGenerator {
         return spaces.toString();
     }
 
-    public String generateCase3(int tokens) {
+    public String category3(int tokens) {
         int operatorCount = (tokens - 1) / 2;
         int operandCount = operatorCount + 1;
 
