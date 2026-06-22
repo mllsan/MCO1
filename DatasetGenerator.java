@@ -1,11 +1,9 @@
 import java.util.Random;
-
-public class DatasetGenerator {
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class DataSetGenerator {
+public class DatasetGenerator {
 
     // test case 1: hierarchy/chain operators
     public static String Category1(int totalToken) {
