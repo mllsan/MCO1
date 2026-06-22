@@ -5,11 +5,14 @@ public class Converter {
         int level = -1;
         if (token.equals("(") || token.equals(")")) {
             level = 4;
-        } else if (token.equals("^")) {
+        } 
+        else if (token.equals("^")) {
             level = 3;
-        } else if (token.equals("*") || token.equals("/") || token.equals("%")) {
+        } 
+        else if (token.equals("*") || token.equals("/") || token.equals("%")) {
             level = 2;
-        } else if (token.equals("+") || token.equals("-")) {
+        } 
+        else if (token.equals("+") || token.equals("-")) {
             level = 1;
         }
         return level;
