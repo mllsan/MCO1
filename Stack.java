@@ -4,14 +4,14 @@ import java.util.ArrayList;
  * Represents a stack data structure.
  * <p>
  *     This class implements the Stack data structure that follows a
- *     First-In First-Out Policy. It is of general Type and works with
+ *     Last-In First-Out Policy. It is of general Type and works with
  *     the reference data types.
  * </p>
  *
  * @author Raphael Romero
  * @author Michaela Santos
  * @version 3.4.0
- * @param <T>
+ * @param <T> is the reference data type the ArrayList will be declared as.
  */
 public class Stack<T> {
     private ArrayList<T> elements;

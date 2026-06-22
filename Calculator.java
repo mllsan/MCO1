@@ -2,6 +2,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * Represents a calculator for postfix expressions
+ * <p>
+ *     This class implements the conversion and evaluation of an
+ *     arithmetic expression in postfix notation. It is composed
+ *     of a Converter class.
+ * </p>
+ *
+ * @author Raphael Romero
+ * @author Michaela Santos
+ * @version 3.2.0
+ */
 public class Calculator {
 
     public static String convert(Converter c, String e) {

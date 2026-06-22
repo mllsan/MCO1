@@ -4,6 +4,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
+/**
+ * Automation class for generating a dataset for file input.
+ * <p>
+ *     This class generates a dataset of valid infix arithmetic
+ *     expressions that will be written to a file and passed to
+ *     the Calculator class.
+ * </p>
+ *
+ * @author Raphael Romero
+ * @author Michaela Santos
+ * @version 2.3.0
+ */
 public class DataSetGenerator {
     public static final String[] operators = {"+", "-", "*", "/", "%", "^"}; 
 
