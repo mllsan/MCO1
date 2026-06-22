@@ -162,30 +162,30 @@ public class DataSetGenerator {
                     currentTokens += 2;
                 } 
                 else if (error == 2) {
-                int invalid = 1;
-                String invalidSymbol = "";
-                String operator = operators[rand.nextInt(operators.length)];
-                do {
-                    invalidSymbol = String.valueOf((char)(rand.nextInt(95) + 32));
-                    int match = 0;
-                    // check that its not operator
-                    for (int i = 0; i < 6; i++) {
-                        if (operators[i].equals(invalidSymbol)) {
-                            match = 1; // It's an operator! We must reject it.
+                    int invalid = 1;
+                    String invalidSymbol = "";
+                    String operator = operators[rand.nextInt(operators.length)];
+                    do {
+                        invalidSymbol = String.valueOf((char)(rand.nextInt(95) + 32));
+                        int match = 0;
+                        // check that its not operator
+                        for (int i = 0; i < 6; i++) {
+                            if (operators[i].equals(invalidSymbol)) {
+                                match = 1; // It's an operator! We must reject it.
+                            }
                         }
-                    }
-                    // check that its not operand
-                    if (invalidSymbol.matches("[0-9]")) {
-                        match = 1;
-                    }
+                        // check that its not operand
+                        if (invalidSymbol.matches("[0-9]")) {
+                            match = 1;
+                        }
+                        
+                        if(match == 0)
+                            invalid = -1;
+                    } while (invalid == 1);
                     
-                    if(match == 0)
-                        invalid = -1;
-                } while (invalid == 1);
-                
-                expression.append(" ").append(operator).append(" ").append(invalidSymbol);
-                currentTokens += 2;
-            }
+                    expression.append(" ").append(operator).append(" ").append(invalidSymbol);
+                    currentTokens += 2;
+                }
 
                 tokenPosition = -1;
             }
