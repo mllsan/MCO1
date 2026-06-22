@@ -1,6 +1,7 @@
 # MCO1
 
 **How to run the program**
+
 Enter this into terminal to compile the program: 
   - javac Calculator.java Converter.java Queue.java Stack.java DataSetGenerator.java
     
