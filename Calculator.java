@@ -27,37 +27,31 @@ public class Calculator {
                             rightOp = operands.pop();
                             leftOp = operands.pop();
                             result = Math.pow(leftOp, rightOp);
-                            operands.push(result);
                             break;
                         case '*':
                             rightOp = operands.pop();
                             leftOp = operands.pop();
                             result = leftOp * rightOp;
-                            operands.push(result);
                             break;
                         case '/':
                             rightOp = operands.pop();
                             leftOp = operands.pop();
                             result = leftOp / rightOp;
-                            operands.push(result);
                             break;
                         case '%':
                             rightOp = operands.pop();
                             leftOp = operands.pop();
                             result = leftOp % rightOp;
-                            operands.push(result);
                             break;
                         case '+':
                             rightOp = operands.pop();
                             leftOp = operands.pop();
                             result = leftOp + rightOp;
-                            operands.push(result);
                             break;
                         case '-':
                             rightOp = operands.pop();
                             leftOp = operands.pop();
                             result = leftOp - rightOp;
-                            operands.push(result);
                             break;
                         default:
                             break;
@@ -84,8 +78,10 @@ public class Calculator {
        String result = convert(new Converter(), "1+2+3+4+5");
        long timeEnd = System.nanoTime();
        long duration = timeEnd - timeStart;
+       double answer = evaluate(result);
 
-       System.out.println(result);
+       System.out.println("Postfix: " + result);
+       System.out.println("Evaluate: " + answer);
        System.out.println("Execution Time: " + duration + " nano seconds");
        System.out.println();
 
@@ -101,8 +97,10 @@ public class Calculator {
            result = convert(new Converter(), line);
            timeEnd = System.nanoTime();
            duration = timeEnd - timeStart;
+           answer = evaluate(result);
 
-           System.out.println(result);
+           System.out.println("Postfix: " + result);
+           System.out.println("Evaluate: " + answer);
            System.out.println("Execution Time: " + duration + " nano seconds");
            System.out.println();
        }
