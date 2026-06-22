@@ -1,6 +1,6 @@
-import java.io.*;
-import java.util.*;
-import java.lang.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Calculator {
 
