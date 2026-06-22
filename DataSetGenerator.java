@@ -226,7 +226,7 @@ public class DataSetGenerator {
         
         // write in file
         try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
-            for (int n = 5; n <= 100; n += 1) {
+            for (int n = 5; n <= 100; n += 2) {
                 if (choice == 1)
                     expression = Category1(n);
                 else if (choice == 2)
