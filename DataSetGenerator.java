@@ -43,26 +43,26 @@ public class DataSetGenerator {
         if (nests < 1)
             nests = 1;
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder exp = new StringBuilder();
         Random rand = new Random();
         int min = 1, max = 9, i, term, nextTerm;
         String op;
 
         for (i = 0; i < nests; i++)
-            sb.append("( ");
+            exp.append("( ");
 
         term = rand.nextInt((max - min) + 1) + min;
-        sb.append(term).append(" ");
+        exp.append(term).append(" ");
 
         for (i = 0; i < nests; i++) {
             op = operators[rand.nextInt(operators.length)];
             nextTerm = rand.nextInt((max - min) + 1) + min;
 
-            sb.append(op).append(" ").append(nextTerm)
+            exp.append(op).append(" ").append(nextTerm)
                     .append(" ").append(") ");
         }
 
-        return sb.toString().trim();
+        return exp.toString().trim();
     }
 
     // test case 3: large white spaces, negative results, 5-6 figure tokens
@@ -82,19 +82,19 @@ public class DataSetGenerator {
         int operatorCount = (tokens - 1) / 2;
         int operandCount = operatorCount + 1;
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder exp = new StringBuilder();
         Random rand = new Random();
         int min = 10000, max = 999999, baseTerm, nextTerm, i = 1, j = 0;
         String[] OPERATORS = {"+", "-", "*", "/"};
         String op;
 
         baseTerm = rand.nextInt((max - min) + 1) + min;
-        sb.append(baseTerm);
-        sb.append(" ");
+        exp.append(baseTerm);
+        exp.append(" ");
 
         do {
             op = OPERATORS[rand.nextInt(OPERATORS.length)];
-            sb.append(op);
+            exp.append(op);
             j++;
 
             if (op.equals("-")) {
@@ -109,15 +109,15 @@ public class DataSetGenerator {
             else
                 nextTerm = rand.nextInt((max - min) + 1) + min;
 
-            sb.append(DataSetGenerator.genWhitespaces());
-            sb.append(nextTerm);
+            exp.append(DataSetGenerator.genWhitespaces());
+            exp.append(nextTerm);
             i++;
-            sb.append(DataSetGenerator.genWhitespaces());
+            exp.append(DataSetGenerator.genWhitespaces());
             baseTerm = nextTerm;
 
         } while (i < operandCount && j < operatorCount);
 
-        return sb.toString().trim();
+        return exp.toString().trim();
     }
 
     // test case 4: invalid operations
@@ -226,7 +226,7 @@ public class DataSetGenerator {
         
         // write in file
         try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
-            for (int n = 5; n <= 100; n += 2) {
+            for (int n = 5; n <= 100; n += 1) {
                 if (choice == 1)
                     expression = Category1(n);
                 else if (choice == 2)
