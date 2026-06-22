@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.*;
 
 /**
  * Represents a calculator for postfix expressions
@@ -91,31 +92,61 @@ public class Calculator {
        long timeEnd = System.nanoTime();
        long duration = timeEnd - timeStart;
        double answer = evaluate(result);
+       String expression = "";
 
        System.out.println("Postfix: " + result);
        System.out.println("Evaluate: " + answer);
        System.out.println("Execution Time: " + duration + " nano seconds");
        System.out.println();
 
-       File cases = new File("testcase.txt");
-       Scanner input = new Scanner(cases);
+        Scanner input = new Scanner (System.in);
+        System.out.println("Where to get Expressions?");
+        System.out.println("1 - Enter Own Equation");
+        System.out.println("2 - Use Data Set");
+        System.out.print(">> ");
+        int choice = input.nextInt();
 
-       while (input.hasNextLine()) {
-           String line = input.nextLine();
-           System.out.println("Infix: " + line);
+        if(choice == 1){
+            input.nextLine(); 
+            System.out.println();
+            System.out.print("Enter Infix Expression: ");
+            String line = input.nextLine(); 
+            System.out.println("Infix: " + line);
 
-           // run time analysis
-           timeStart = System.nanoTime();
-           result = convert(new Converter(), line);
-           timeEnd = System.nanoTime();
-           duration = timeEnd - timeStart;
-           answer = evaluate(result);
+            // run time analysis and evaluate expression
+            timeStart = System.nanoTime();
+            result = convert(new Converter(), line);
+            timeEnd = System.nanoTime();
+            duration = timeEnd - timeStart;
+            answer = evaluate(result);
 
-           System.out.println("Postfix: " + result);
-           System.out.println("Evaluate: " + answer);
-           System.out.println("Execution Time: " + duration + " nano seconds");
-           System.out.println();
-       }
-       input.close();
+            System.out.println("Postfix: " + result);
+            System.out.println("Evaluate: " + answer);
+            System.out.println("Execution Time: " + duration + " nano seconds");
+            System.out.println();
+        }
+
+        else if (choice == 2){
+            File cases = new File("testcase.txt");
+            Scanner dataset = new Scanner(cases);
+
+            System.out.println();
+            while (dataset.hasNextLine()) {
+                String line = dataset.nextLine();
+                System.out.println("Infix: " + line);
+
+                timeStart = System.nanoTime();
+                result = convert(new Converter(), line);
+                timeEnd = System.nanoTime();
+                duration = timeEnd - timeStart;
+                answer = evaluate(result);
+
+                System.out.println("Postfix: " + result);
+                System.out.println("Evaluate: " + answer);
+                System.out.println("Execution Time: " + duration + " nano seconds");
+                System.out.println();
+            }
+            dataset.close();
+        }
     }
 }
