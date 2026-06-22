@@ -1,10 +1,71 @@
 import java.io.*;
 import java.util.*;
+import java.lang.*;
 
 public class Calculator {
 
     public static String convert(Converter c, String e) {
         return c.toPostfix(e);
+    }
+
+    public static double evaluate(String postfx) {
+        Stack<Double> operands = new Stack<>();
+        String[] tokens = postfx.trim().split("\\s+");
+        String token;
+
+        for (int i = 0; i < tokens.length; i++) {
+            token = tokens[i];
+
+            if (token.equals("^") || token.equals("*") || token.equals("/") ||
+                    token.equals("%") || token.equals("+") || token.equals("-")) {
+                double leftOp, rightOp, result = 0;
+
+                switch (token.charAt(0)) {
+                    case '^':
+                        rightOp = operands.pop();
+                        leftOp = operands.pop();
+                        result = Math.pow(leftOp, rightOp);
+                        operands.push(result);
+                        break;
+                    case '*':
+                        rightOp = operands.pop();
+                        leftOp = operands.pop();
+                        result = leftOp * rightOp;
+                        operands.push(result);
+                        break;
+                    case '/':
+                        rightOp = operands.pop();
+                        leftOp = operands.pop();
+                        result = leftOp / rightOp;
+                        operands.push(result);
+                        break;
+                    case '%':
+                        rightOp = operands.pop();
+                        leftOp = operands.pop();
+                        result = leftOp % rightOp;
+                        operands.push(result);
+                        break;
+                    case '+':
+                        rightOp = operands.pop();
+                        leftOp = operands.pop();
+                        result = leftOp + rightOp;
+                        operands.push(result);
+                        break;
+                    case '-':
+                        rightOp = operands.pop();
+                        leftOp = operands.pop();
+                        result = leftOp - rightOp;
+                        operands.push(result);
+                        break;
+                    default:
+                        break;
+                }
+                operands.push(result);
+            }
+            else
+                operands.push(Double.parseDouble(token));
+        }
+        return operands.pop();
     }
 
     public static void main(String[] args) throws FileNotFoundException {
@@ -38,7 +99,6 @@ public class Calculator {
             System.out.println("Execution Time: " + duration + " nano seconds");
             System.out.println();
         }
-
         input.close();
     }
 }
