@@ -1,9 +1,6 @@
 public class Converter {
     private String notation;
 
-    public Converter() {
-    }
-
     private int precedence(String token) {
         int level = -1;
         if (token.equals("(") || token.equals(")")) {
