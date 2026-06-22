@@ -5,11 +5,11 @@ import java.io.PrintWriter;
 import java.util.*;
 
 public class DataSetGenerator {
+    public static final String[] operators = {"+", "-", "*", "/", "%", "^"}; 
 
     // test case 1: hierarchy/chain operators
     public static String Category1(int totalToken) {
         StringBuilder expression = new StringBuilder();
-        String[] operators = {"+", "*", "/", "-", "%", "^"};
         int currentTokens = 0;
         Random rand = new Random();
 
@@ -46,7 +46,6 @@ public class DataSetGenerator {
         StringBuilder sb = new StringBuilder();
         Random rand = new Random();
         int min = 1, max = 9, i, term, nextTerm;
-        String[] operators = {"+", "-", "*", "/", "%", "^"};
         String op;
 
         for (i = 0; i < nests; i++)
@@ -86,7 +85,7 @@ public class DataSetGenerator {
         StringBuilder sb = new StringBuilder();
         Random rand = new Random();
         int min = 10000, max = 999999, baseTerm, nextTerm, i = 1, j = 0;
-        String[] operators = {"+", "-", "*", "/"};
+        String[] OPERATORS = {"+", "-", "*", "/"};
         String op;
 
         baseTerm = rand.nextInt((max - min) + 1) + min;
@@ -94,7 +93,7 @@ public class DataSetGenerator {
         sb.append(" ");
 
         do {
-            op = operators[rand.nextInt(operators.length)];
+            op = OPERATORS[rand.nextInt(OPERATORS.length)];
             sb.append(op);
             j++;
 
@@ -126,7 +125,6 @@ public class DataSetGenerator {
         StringBuilder expression = new StringBuilder();
         Random rand = new Random();
         
-        String[] operators = {"+", "*", "/", "-", "%", "^"};
         String[] mismatchedParens = {"(", ")", "]", "}"};
         int currentTokens = 0;
         int tokenPosition = 0;
