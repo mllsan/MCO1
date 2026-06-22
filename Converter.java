@@ -23,7 +23,6 @@ public class Converter {
         Queue<String> tempQ = new Queue<>();
         boolean isError = false;
         int i = 0;
-        String errorMessage = "";
         String prevToken = "None";
 
         while (i < ntn.length() && !isError) {
@@ -59,7 +58,6 @@ public class Converter {
             else if (currentToken.equals(")")) {
                 if (prevToken.equals("OpenParen")) {
                     isError = true;
-                    errorMessage = "Empty Parenthesis";
                 }
 
                 // pops and enqueues equation inside parenthesis
@@ -72,7 +70,6 @@ public class Converter {
                 } 
                 else {
                     isError = true;
-                    errorMessage = "Missing Parenthesis";
                 }
 
                 prevToken = "CloseParen";
@@ -84,7 +81,6 @@ public class Converter {
                 // Check for errors
                 if (prevToken.equals("Operator") || prevToken.equals("OpenParen") || prevToken.equals("None")) {
                     isError = true;
-                    errorMessage = "Invalid expression";
                 }
                 
                 // Check division by zero
@@ -95,7 +91,6 @@ public class Converter {
                     }
                     if (nextToken < ntn.length() && ntn.charAt(nextToken) == '0') {
                         isError = true;
-                        errorMessage = "Operation is undefined";
                     }
                 }
 
@@ -110,14 +105,12 @@ public class Converter {
 
         else {
             isError = true;
-            errorMessage = "Invalid character token";
         }
     }
 
         // Check for extra operators at end
         if (prevToken.equals("Operator") && !isError) {
             isError = true;
-            errorMessage = "Invalid Expression";
         }
 
         while (!tempS.isEmpty() && !isError) {
@@ -125,7 +118,6 @@ public class Converter {
             // check for unclosed parenthesis
             if (topToken.equals("(") || topToken.equals(")")) {
                 isError = true;
-                errorMessage = "Missing Parenthesis";
             } 
             else {
                 tempQ.enqueue(topToken);
@@ -138,11 +130,11 @@ public class Converter {
         if (!isError) {
             while (!tempQ.isEmpty()) {
                 Equation.append(tempQ.dequeue()).append(" ");
-                result = "Postfix: " + Equation.toString().trim();
+                result = Equation.toString().trim();
             }
         } 
         else {
-            result = "Error: " + errorMessage;
+            result = null;
         }
 
         return result;
